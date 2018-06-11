@@ -17,34 +17,31 @@ Tania Álvarez Díaz ([@TaniaAlvarezDiaz](https://github.com/TaniaAlvarezDiaz))
 
 # Usuarios de prueba para la aplicación:
 
-- Email: paco@hotmail.com
-  Contraseña: 123456
-  Nombre: Paco Gómez
-  Fecha de nacimiento: 08/16/1970
-  DNI: 12345678A
-  Dirección: Calle Uría
-  Nacionalidad: Española
+- Username: 09847581T
+  Contraseña: 123456789
+  Kind: Person
+  Nombre: Pedro Suárez
+  Email: pedro@gmail.com
+  Location:
+  
+- Username: 87654321B
+  Contraseña: 1234
+  Kind: Person
+  Nombre: Pepe Fernández
+  Email: pepe@gmail.com
+  Location: 25.7751;-80.2105
+ 
+- Username: SI1Oviedo
+  Contraseña: 9874
+  Kind: Sensor
+  Nombre: Sensor Iluminacion SI1
+  Email: carmen@yahoo.com
+  Location: 43.36;-5.85
+  
+- Username: Q3318001I
+  Contraseña: 147852369
+  Kind: Entity
+  Nombre: Uniovi
+  Email: uniovi@example.com
+  Location: 
 
-- Email: pepe@gmail.com
- Contraseña: 123456
- Nombre: Pepe Fernández
- Fecha de nacimiento: 02/23/1975
- DNI: 87654321B
- Dirección: Calle Principal
- Nacionalidad: Española
-
-- Email: carmen@yahoo.com
- Contraseña: 123456
- Nombre: Carmen López
- Fecha de nacimiento: 08/16/1970
- DNI: 11223344C
- Dirección: Calle Calvo Sotelo
- Nacionalidad: Española
-
-- Email: isabel@gmail.com
- Contraseña: 123456
- Nombre: Isabel Rodríguez
- Fecha de nacimiento: 02/23/1975
- DNI: 22334455D
- Dirección: Avenida Galicia
- Nacionalidad: Española
