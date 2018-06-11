@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/TaniaAlvarezDiaz/Agents.svg?branch=master)](https://travis-ci.com/TaniaAlvarezDiaz/Agents)
+
 # Agents
 Módulo para que los agentes puedan consultar y obtener información del sistema.
 
