@@ -1,92 +1,49 @@
 package dbManagement.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Agent")
-public class Agent {
+@Table(name = "User")
+public class Agent{
 
-	// Id generado automáticamente para diferenciar cada uno (para mapear)
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	// Atributos del participante
 	private String nombre;
-	private String apellidos;
-	private String password;
-	private Date fechaNacimiento;
-	@Column(unique = true)
+	private Location location;
 	private String email;
 	@Column(unique = true)
-	private String DNI;
-	private String direccion;
-	private String nacionalidad;
-
-	private boolean isAdmin;
-	private boolean isPolitician;
-
-	/**
-	 * Constructor vacío (ya que es para mapear)
-	 */
-	Agent() {
-	}
-
-	/**
-	 * Constructor
-	 * 
-	 * @param nombre
-	 * @param apellidos
-	 * @param password
-	 * @param fechaNacimiento
-	 * @param email
-	 * @param dNI
-	 * @param direccion
-	 * @param nacionalidad
-	 */
-	public Agent(String nombre, String apellidos, String password, Date fechaNacimiento, String email, String dNI,
-			String direccion, String nacionalidad, boolean isAdmin, boolean isPolitician) {
-		super();
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.password = password;
-		this.fechaNacimiento = fechaNacimiento;
-		this.email = email;
-		this.DNI = dNI;
-		this.direccion = direccion;
-		this.nacionalidad = nacionalidad;
-		this.isAdmin = isAdmin;
-		this.isPolitician = isPolitician;
-	}
+	private String identificador; // Es unico y es el nombre de usuario
+	private String tipo;
+	private String password;
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	public String getApellidos() {
-		return apellidos;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getPassword() {
-		return password;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	public String getEmail() {
@@ -97,39 +54,60 @@ public class Agent {
 		this.email = email;
 	}
 
-	public String getDNI() {
-		return DNI;
+	public String getIdentificador() {
+		return identificador;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public void setIdentificador(String identificador) {
+		this.identificador = identificador;
 	}
 
-	public String getNacionalidad() {
-		return nacionalidad;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public boolean isAdmin() {
-		return isAdmin;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
+	public String getPassword() {
+		return password;
 	}
 
-	public boolean isPolitician() {
-		return isPolitician;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public void setPolitician(boolean isPolitician) {
-		this.isPolitician = isPolitician;
+
+	/**
+	 * Constructor
+	 */
+	Agent() {
+	}
+
+	/**
+	 * Constructor
+	 * 
+	 * @param nombre
+	 * @param location
+	 * @param email
+	 * @param identificador
+	 * @param tipo
+	 */
+	public Agent(String nombre, String location, String email, String identificador, String tipo, String password) {
+		setNombre(nombre);
+		setLocation(obtenerLocalizacion(location));
+		setEmail(email);
+		setIdentificador(identificador);
+		setTipo(tipo);
+		setPassword(password);
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((identificador == null) ? 0 : identificador.hashCode());
 		return result;
 	}
 
@@ -142,19 +120,36 @@ public class Agent {
 		if (getClass() != obj.getClass())
 			return false;
 		Agent other = (Agent) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (identificador == null) {
+			if (other.identificador != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!identificador.equals(other.identificador))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Agent [nombre=" + nombre + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + ", email=" + email + ", DNI=" + DNI + ", direccion="
-				+ direccion + ", nacionalidad=" + nacionalidad + ", isAdmin=" + isAdmin + ", isPolitician="
-				+ isPolitician + "]";
+		return "Agent [id=" + id + ", nombre=" + nombre + ", email=" + email + ", identificador=" + identificador
+				+ ", tipo=" + tipo + "]";
 	}
 
+	/**
+	 * Método para obtener la localizacion del usuario a partir del string que se
+	 * pasa por parámetro
+	 * 
+	 * @param localizacion
+	 * @return localizacion del usuario
+	 */
+	private Location obtenerLocalizacion(String localizacion) {
+		if (localizacion.equals("")) {
+			Location location = new Location(0, 0);
+			location.setExist(false);
+			return location;
+		}
+		String[] trozos = localizacion.split(";");
+		double latitud = Double.parseDouble(trozos[0]);
+		double longitud = Double.parseDouble(trozos[1]);
+		return new Location(latitud, longitud);
+}
 }

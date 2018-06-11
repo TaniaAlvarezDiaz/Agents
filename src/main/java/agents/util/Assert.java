@@ -8,7 +8,7 @@ public class Assert {
 
 	public static boolean isEmailEmpty(String email) {
 		if (email.trim().isEmpty())
-			throw ErrorFactory.getError(Errors.REQUIRED_EMAIL);
+			throw ErrorFactory.getError(Errors.REQUIRED_USERNAME);
 		else
 			return false;
 	}

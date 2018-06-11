@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import agents.util.Assert;
-import agents.util.Utilidades;
 import agents.webService.responses.errors.ErrorResponse;
 import dbManagement.GetAgent;
 import dbManagement.model.Agent;
@@ -37,23 +36,14 @@ public class GetAgentInfoHTMLController {
 		Assert.isEmailValid(email);
 		Assert.isPasswordEmpty(password);
 
-		Agent participant = getParticipant.getParticipant(email);
+		Agent participant = getParticipant.findByEmail(email);
 
 		Assert.isParticipantNull(participant);
 		Assert.isPasswordCorrect(password, participant);
 
-		session.setAttribute("participant", participant);
+		session.setAttribute("agent", participant);
 
-		if (!participant.isAdmin() && !participant.isPolitician()) {
-			session.setAttribute("edad", Utilidades.getEdad(participant.getFechaNacimiento()));
-			return "datosParticipant";
-		} else {
-			if (participant.isAdmin())
-				return "dashboardAdmin";
-			else
-				return "dashboardPolitician";
-		}
-
+		return "datosAgent";
 	}
 
 	@ExceptionHandler(ErrorResponse.class)
