@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/TaniaAlvarezDiaz/Agents.svg?token=ENc151Ahc3Y3oqzaSf7S&branch=master)](https://travis-ci.com/TaniaAlvarezDiaz/Agents)
 
 # Agents
-Módulo para que los agentes puedan consultar y obtener información del sistema.
+Módulo que permite a los agentes consultar y obtener información del sistema.
 
 # Skeleton authors 
 David Lorenzo González
