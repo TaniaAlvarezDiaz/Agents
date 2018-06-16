@@ -32,13 +32,12 @@ public class ChangeInfoRESTController implements ChangeInfo {
 	@Override
 	@RequestMapping(value = "/changePassword", method = RequestMethod.POST, headers = { "Accept=application/json",
 			"Accept=application/xml" }, produces = { "application/json", "text/xml" })
-	public ResponseEntity<RespuestaChangeInfoREST> changePassword(
-			@RequestBody(required = true) PeticionChangePasswordREST datos) {
-		String email = datos.getEmail();
+	public ResponseEntity<RespuestaChangeInfoREST> changePassword(@RequestBody(required = true) PeticionChangePasswordREST datos) {
+		String email = datos.getUsername();
 		String password = datos.getPassword();
 		String newPassword = datos.getNewPassword();
 
-		Assert.isEmailEmpty(email);
+		Assert.isUsernameEmpty(email);
 		Assert.isEmailValid(email);
 
 		Assert.isPasswordEmpty(password);
@@ -61,14 +60,14 @@ public class ChangeInfoRESTController implements ChangeInfo {
 			"Accept=application/xml" }, produces = { "application/json", "text/xml" })
 	public ResponseEntity<RespuestaChangeInfoREST> changeEmail(
 			@RequestBody(required = true) PeticionChangeEmailREST datos) {
-		String email = datos.getEmail();
+		String email = datos.getUsername();
 		String password = datos.getPassword();
 		String nuevoEmail = datos.getNewEmail();
 
-		Assert.isEmailEmpty(email);
+		Assert.isUsernameEmpty(email);
 		Assert.isEmailValid(email);
 
-		Assert.isEmailEmpty(nuevoEmail);
+		Assert.isUsernameEmpty(nuevoEmail);
 		Assert.isEmailValid(nuevoEmail);
 
 		Assert.isSameEmail(email, nuevoEmail);

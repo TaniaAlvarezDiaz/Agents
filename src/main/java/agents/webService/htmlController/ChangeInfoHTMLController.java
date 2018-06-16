@@ -49,7 +49,6 @@ public class ChangeInfoHTMLController {
 
 	@RequestMapping(value = "/confirmEmail", method = RequestMethod.POST)
 	public String changeEmail(HttpSession session, @RequestParam String email, Model model) {
-		Assert.isEmailEmpty(email);
 		Assert.isEmailValid(email);
 
 		// Agent que se ha logeado antes

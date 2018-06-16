@@ -29,17 +29,18 @@ public class GetAgentInfoHTMLController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String getLogin(HttpSession session, @RequestParam String email, @RequestParam String password,
+	public String getLogin(HttpSession session, @RequestParam String username, @RequestParam String password, @RequestParam String kind,
 			Model model) {
 
-		Assert.isEmailEmpty(email);
-		Assert.isEmailValid(email);
+		Assert.isUsernameEmpty(username);
 		Assert.isPasswordEmpty(password);
+		Assert.isKindEmpty(kind);
 
-		Agent participant = getParticipant.findByEmail(email);
+		Agent participant = getParticipant.findByIdentificador(username);
 
 		Assert.isParticipantNull(participant);
 		Assert.isPasswordCorrect(password, participant);
+		Assert.isKindValid(kind, participant);
 
 		session.setAttribute("agent", participant);
 

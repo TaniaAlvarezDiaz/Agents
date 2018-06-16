@@ -1,13 +1,22 @@
 package agents.util;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import agents.factory.ErrorFactory;
 import agents.factory.ErrorFactory.Errors;
 import dbManagement.model.Agent;
 
 public class Assert {
+	
+	private static Map<Integer, String> agents;
+	private final static String AGENTSFILE = "src/main/resources/agents.csv";
 
-	public static boolean isEmailEmpty(String email) {
-		if (email.trim().isEmpty())
+	public static boolean isUsernameEmpty(String username) {
+		if (username.trim().isEmpty())
 			throw ErrorFactory.getError(Errors.REQUIRED_USERNAME);
 		else
 			return false;
@@ -19,6 +28,59 @@ public class Assert {
 		else
 			return false;
 	}
+	
+	public static boolean isKindEmpty(String kind) {
+		if (kind.trim().isEmpty())
+			throw ErrorFactory.getError(Errors.REQUIRED_KIND);
+		else
+			return false;
+	}
+	
+	/**
+	 * Método para comprobar si el kind introducido existe y es correcto
+	 * @param kind
+	 * @return
+	 */
+	public static boolean isKindValid(String kind, Agent agent) {
+		//Cargamos el fichero
+		loadAgents();
+		if (!agents.containsValue(kind))
+			return false;
+		else {
+			if (agent.getTipo().equals(kind))
+				return true;
+			throw ErrorFactory.getError(Errors.INCORRECT_KIND);
+		}
+	}
+	
+	/**
+	 * Método para cargar los agentes del archivo csv
+	 */
+	private static void loadAgents() {
+		BufferedReader br = null;
+		agents = new HashMap<Integer, String>();
+
+		try {
+			br = new BufferedReader(new FileReader(AGENTSFILE));
+			while (br.ready()) {
+				String[] linea = br.readLine().split(";");
+				Integer key = Integer.parseInt(linea[0]);
+				String value = linea[1];
+				agents.put(key, value);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+}
 
 	/**
 	 * Comprobacion de si el correo es valido

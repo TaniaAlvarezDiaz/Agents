@@ -2,7 +2,7 @@ package agents.webService.request;
 
 public class PeticionChangePasswordREST {
 
-	private String email;
+	private String username;
 	private String password;
 	private String newPassword;
 	
@@ -10,11 +10,11 @@ public class PeticionChangePasswordREST {
 
 	}
 
-	public PeticionChangePasswordREST(String email, String password, String newPassword) {
+	public PeticionChangePasswordREST(String username, String password, String newPassword) {
 		super();
 		this.password = password;
 		this.newPassword = newPassword;
-		this.email = email;
+		this.username = username;
 	}
 	
 	public void setPassword(String password) {
@@ -25,8 +25,8 @@ public class PeticionChangePasswordREST {
 		this.newPassword = newPassword;
 	}
 	
-	public String getEmail() {
-		return email;
+	public String getUsername() {
+		return username;
 	}
 
 	public String getPassword() {

@@ -29,9 +29,9 @@ public class Application {
 			
 			repository.save(new Agent("Pedro Suárez", "", "pedro@gmail.com", "09847581T", "Person", "123456789"));
 
-			repository.save(new Agent("Pepe Fernández", "25.7751;-80.2105", "pepe@gmail.com", "87654321B", "Person", "1234"));
+			repository.save(new Agent("Pepe Fernández", "25.7751&-80.2105", "pepe@gmail.com", "87654321B", "Person", "1234"));
 			
-			repository.save(new Agent("Sensor Iluminacion SI1", "43.36;-5.85", "carmen@yahoo.com", "SI1Oviedo", "Sensor", "9874"));
+			repository.save(new Agent("Sensor Iluminacion SI1", "43.36&-5.85", "carmen@yahoo.com", "SI1Oviedo", "Sensor", "9874"));
 			
 			repository.save(new Agent("Uniovi", "", "uniovi@example.com", "Q3318001I", "Entity", "147852369"));
 		};

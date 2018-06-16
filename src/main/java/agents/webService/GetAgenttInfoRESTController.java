@@ -29,7 +29,7 @@ public class GetAgenttInfoRESTController implements GetAgentInfo {
 			"Accept=application/xml" }, produces = { "application/json", "text/xml" })
 	public ResponseEntity<RespuestaInfoREST> getPOSTpetition(@RequestBody(required = true) PeticionInfoREST peticion) {
 
-		Assert.isEmailEmpty(peticion.getLogin());
+		Assert.isUsernameEmpty(peticion.getLogin());
 		Assert.isEmailValid(peticion.getLogin());
 		Assert.isPasswordEmpty(peticion.getPassword());
 

@@ -10,6 +10,7 @@ import agents.webService.responses.errors.SameEmailErrorResponse;
 import agents.webService.responses.errors.UnknownErrorResponse;
 import agents.webService.responses.errors.UserNotFoundResponse;
 import agents.webService.responses.errors.WrongEmailStyleErrorResponse;
+import agents.webService.responses.errors.IncorrectKindErrorResponse;
 
 /**
  * Creacion de los distintos tipos de error.
@@ -19,7 +20,7 @@ import agents.webService.responses.errors.WrongEmailStyleErrorResponse;
 public class ErrorFactory {
 
 	public static enum Errors {
-		INCORRECT_PASSWORD, REQUIRED_USERNAME, REQUIRED_PASSWORD, REQUIRED_KIND, USER_NOT_FOUND, WRONG_EMAIL_STYLE, INCORRECT_PASSWORD_DO_NOT_MATCH, SAME_EMAIL
+		INCORRECT_PASSWORD, REQUIRED_USERNAME, REQUIRED_PASSWORD, REQUIRED_KIND, INCORRECT_KIND, USER_NOT_FOUND, WRONG_EMAIL_STYLE, INCORRECT_PASSWORD_DO_NOT_MATCH, SAME_EMAIL
 	}
 
 	// Generar Constructor privado no queremos que se pueda tener varias
@@ -45,6 +46,8 @@ public class ErrorFactory {
 			return new PasswordDoNotMatchErrorResponse();
 		case SAME_EMAIL:
 			return new SameEmailErrorResponse();
+		case INCORRECT_KIND:
+			return new IncorrectKindErrorResponse();
 		default:// en caso de no conocer el error.
 			return new UnknownErrorResponse();
 		}
