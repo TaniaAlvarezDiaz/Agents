@@ -1,8 +1,6 @@
 [![Build Status](https://travis-ci.com/TaniaAlvarezDiaz/Agents.svg?token=ENc151Ahc3Y3oqzaSf7S&branch=master)](https://travis-ci.com/TaniaAlvarezDiaz/Agents)
 [![codecov](https://codecov.io/gh/TaniaAlvarezDiaz/Agents/branch/master/graph/badge.svg?token=HznWS1AduJ)](https://codecov.io/gh/TaniaAlvarezDiaz/Agents)
 
-
-
 # Agents
 Módulo que permite a los agentes consultar y obtener información del sistema.
 
