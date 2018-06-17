@@ -3,13 +3,13 @@
 
 <head>
  	<meta charset="UTF-8"/>
- 	<title>Datos personales</title>
+ 	<title>Datos agente</title>
 </head>
 <body>
-<h1>Datos personales</h1>
+<h1>Datos agente</h1>
 	<form method="POST" action="confirmEmail" >
 		<label for="email"><strong>Correo:</strong> </label>
-		<input type="text" name="email" th:value="${session.participant.email}"/>
+		<input type="text" name="email" th:value="${session.agent.email}"/>
 		<input type="submit" name="cambiarEmail" value="Cambiar email"/>
 	</form>
 	
