@@ -23,8 +23,13 @@ public class GetAgentInfoHTMLController {
 	@Autowired
 	private GetAgent getParticipant;
 
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String mostrarLogin(Model model) {
+		return "login";
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String inicalicerLogin(Model model) {
+	public String inicializarLogin(Model model) {
 		return "login";
 	}
 
