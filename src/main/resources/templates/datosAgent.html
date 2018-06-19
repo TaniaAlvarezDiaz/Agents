@@ -3,27 +3,38 @@
 
 <head>
  	<meta charset="UTF-8"/>
- 	<title>Datos agente</title>
+ 	<title>Datos del agente</title>
 </head>
 <body>
-<h1>Datos agente</h1>
+<h1>Datos del agente</h1>
+	
+	<i><span th:if="${info != null}" th:text="${info}">Info</span></i>
+	<br/>
+	<p><strong>Nombre:</strong> <span th:text="${session.agent.nombre}"></span></p>
+	<p><strong>Localizacion:</strong> <span th:text="${session.agent.location.toString()}"></span></p>
+	<p><strong>Email::</strong> <span th:text="${session.agent.email}"></span></p>
+	<p><strong>Tipo de usuario:</strong> <span th:text="${session.agent.tipo}"></span></p>
+	
 	<form method="POST" action="/confirmEmail" >
-		<label for="email"><strong>Correo:</strong> </label>
+		<label for="email"><strong>Nuevo email:</strong> </label>
 		<input type="text" name="email" th:value="${session.agent.email}"/>
 		<input type="submit" name="cambiarEmail" value="Cambiar email"/>
 	</form>
-	
-	<p><strong>Nombre:</strong> <span th:text="${agent.nombre}"></span></p>
-	<p><strong>Localizacion:</strong> <span th:text="${agent.location.latitud ; session.participan.location.longitud}"></span></p>
-	<p><strong>Email::</strong> <span th:text="${agent.email}"></span></p>
-	<p><strong>Tipo de usuario:</strong> <span th:text="${agent.tipo}"></span></p>
-	
-	<i><span th:if="${info != null}" th:text="${info}">Info</span></i>
-	
 	<br/>
-	<br/>
-	<form method="POST" action="/changeInfo" >
-		<input type="submit" name="cambiarContraseña" value="Cambiar contraseña"/>
-	</form>
+	<form method="POST" action="/confirmPassword" >
+	<table>
+		<tr>
+			<td><strong><label for="password">Contraseña: </label></strong></td>
+			<td><input type="password" name="password" /></td>
+		</tr>
+		<tr>
+			<td><strong><label for="newPassword">Nueva contraseña: </label></strong></td>
+			<td><input type="password" name="newPassword"/></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" name="modificar" value="Modificar"/></td>
+		</tr>
+	</table>
+</form>
 </body>
 </html>

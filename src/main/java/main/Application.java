@@ -20,6 +20,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 @EnableJpaRepositories("dbManagement.repository")
 @EntityScan(basePackages = {"dbManagement.model"})
+@ComponentScan(basePackages = {"agents", "dbManagement"})
 public class Application {
 
 	public static void main(String[] args) {

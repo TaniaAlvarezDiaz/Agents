@@ -22,11 +22,6 @@ public class ChangeInfoHTMLController {
 	@Autowired
 	private UpdateInfo updateInfo;
 
-	@RequestMapping(value = "/changeInfo", method = RequestMethod.POST)
-	public String changeInfo() {
-		return "changeInfo";
-	}
-
 	@RequestMapping(value = "/confirmPassword", method = RequestMethod.POST)
 	public String changePassword(HttpSession session, @RequestParam String password, @RequestParam String newPassword,
 			Model model) {
@@ -35,7 +30,7 @@ public class ChangeInfoHTMLController {
 		Assert.isSamePassword(password, newPassword);
 
 		// Agent que se ha logeado antes
-		Agent p = (Agent) session.getAttribute("participant");
+		Agent p = (Agent) session.getAttribute("agent");
 		Assert.isParticipantNull(p);
 		Assert.isPasswordCorrect(password, p);
 
@@ -52,7 +47,7 @@ public class ChangeInfoHTMLController {
 		Assert.isEmailValid(email);
 
 		// Agent que se ha logeado antes
-		Agent p = (Agent) session.getAttribute("participant");
+		Agent p = (Agent) session.getAttribute("agent");
 		Assert.isParticipantNull(p);
 		Assert.isSameEmail(email, p.getEmail());
 
