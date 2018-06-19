@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Datos agente</h1>
-	<form method="POST" action="confirmEmail" >
+	<form method="POST" action="/confirmEmail" >
 		<label for="email"><strong>Correo:</strong> </label>
 		<input type="text" name="email" th:value="${session.agent.email}"/>
 		<input type="submit" name="cambiarEmail" value="Cambiar email"/>
@@ -22,7 +22,7 @@
 	
 	<br/>
 	<br/>
-	<form method="POST" action="changeInfo" >
+	<form method="POST" action="/changeInfo" >
 		<input type="submit" name="cambiarContraseña" value="Cambiar contraseña"/>
 	</form>
 </body>

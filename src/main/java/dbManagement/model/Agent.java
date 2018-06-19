@@ -149,7 +149,7 @@ public class Agent{
 			location.setExist(false);
 			return location;
 		}
-		String[] trozos = localizacion.split(";");
+		String[] trozos = localizacion.split("&");
 		double latitud = Double.parseDouble(trozos[0]);
 		double longitud = Double.parseDouble(trozos[1]);
 		return new Location(latitud, longitud);
