@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import agents.util.Assert;
+import agents.util.ReaderCSV;
 import agents.webService.responses.errors.ErrorResponse;
 import dbManagement.GetAgent;
 import dbManagement.model.Agent;
@@ -25,11 +26,15 @@ public class GetAgentInfoHTMLController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mostrarLogin(Model model) {
+		// Enviamos a la vista los tipos de agente, sacados del fichero csv
+		model.addAttribute("kinds", new ReaderCSV().getKinds());
 		return "login";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String inicializarLogin(Model model) {
+		// Enviamos a la vista los tipos de agente, sacados del fichero csv
+		model.addAttribute("kinds", new ReaderCSV().getKinds());
 		return "login";
 	}
 

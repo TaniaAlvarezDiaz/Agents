@@ -16,10 +16,16 @@
 			<td><label for="password"><strong>Contraseña:</strong> </label></td>
 			<td><input type="password" id="password" name="password" /></td>
 		</tr>
-		<tr>
-			<td><label for="kind"><strong>Kind:</strong> </label></td>
-			<td><input type="text" placeholder="Person, Entity or Sensor" id="kind" name="kind"/></td>
-		</tr>
+		<div class="form-group">
+				<label class="control-label col-sm-2" for="kind">Tipo del
+					agente:</label>
+				<div class="col-sm-10">
+					<select id="user" class="form-control" name="kind">
+						<option th:each="kind : ${kinds}" th:value="${kind}"
+							th:text="${kind}">Kind</option>
+					</select>
+				</div>
+			</div>
 		<tr>
 			<td><button type="submit" id="login">Entrar</button></td>
 		</tr>
