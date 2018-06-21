@@ -53,6 +53,7 @@ public class GetAgentInfoHTMLController {
 		Assert.isKindValid(kind, participant);
 
 		session.setAttribute("agent", participant);
+		model.addAttribute("kindCode", new ReaderCSV().getKindCode(kind));
 
 		return "datosAgent";
 	}

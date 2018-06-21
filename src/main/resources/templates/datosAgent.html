@@ -12,8 +12,10 @@
 	<br/>
 	<p><strong>Nombre:</strong> <span th:text="${session.agent.nombre}"></span></p>
 	<p><strong>Localizacion:</strong> <span th:text="${session.agent.location.toString()}"></span></p>
-	<p><strong>Email::</strong> <span th:text="${session.agent.email}"></span></p>
+	<p><strong>Email:</strong> <span th:text="${session.agent.email}"></span></p>
+	<p><strong>Identificador:</strong> <span th:text="${session.agent.identificador}"></span></p>
 	<p><strong>Tipo de usuario:</strong> <span th:text="${session.agent.tipo}"></span></p>
+	<p><strong>KindCode:</strong> <span th:text="${kindCode}"></span></p>
 	
 	<form method="POST" action="/confirmEmail" >
 		<label for="email"><strong>Nuevo email:</strong> </label>
